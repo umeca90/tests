@@ -5,7 +5,7 @@ import os
 import socket
 import sys
 from collections import namedtuple
-from multiprocessing import Process, Queue, Manager
+from multiprocessing import Process, Queue
 from queue import Empty
 from typing import Union
 

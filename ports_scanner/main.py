@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import multiprocessing
-import sys
 
 from port_scanner import PortScanner
 import argparse
