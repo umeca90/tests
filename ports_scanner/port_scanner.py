@@ -56,7 +56,6 @@ class PortScanner(Process):
         if self.opened_hosts:
             path = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.hosts_file)
             print('Скан закончен, результат ниже:')
-
             print(f'Результат сохранен в {path}')
             self._print_hosts_msg()
             self._write_log_file()
@@ -188,10 +187,3 @@ class Scanner(Process):
                 return http_server
 
         return None
-
-
-if __name__ == '__main__':
-    ip = '192.168.0.0/24'
-    port = [80, 443, 22, 21, 25, 8000]
-    s = PortScanner(ip_range=ip, ports=port)
-    s.run()
