@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import multiprocessing
-
+import sys
 from port_scanner import PortScanner
 import argparse
 
@@ -20,7 +20,10 @@ def main():
                                                                           "По умолчанию hosts.log")
     args = parser.parse_args()
     args_dict = vars(args)
-    ports = list(map(int, args_dict['ports'].split(',')))
+    try:
+        ports = list(map(int, args_dict['ports'].split(',')))
+    except ValueError:
+        sys.exit('Ошибка ввода портов, пример ввода - 80, 443')
     args_dict.update({'ports': ports})
     multiprocessing.freeze_support()
     scanner = PortScanner(**args_dict)

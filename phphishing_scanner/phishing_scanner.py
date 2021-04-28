@@ -122,7 +122,3 @@ class Scanner(Process):
         except (ConnectionRefusedError, socket.error):
             pass
 
-
-if __name__ == '__main__':
-    s = PhishingScanner('group-ib')
-    s.run()
