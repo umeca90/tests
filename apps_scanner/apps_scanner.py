@@ -11,7 +11,7 @@ import requests
 from transliterate import translit
 
 SCROLL_PAUSE_TIME = 0.7
-DRIVER_PATH = '/Users/umeca90/code/tests/apps_scanner/chromedriver'
+DRIVER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chromedriver')
 BASE_LINK = 'https://play.google.com'
 
 
@@ -84,16 +84,11 @@ class AppsScanner(Process):
         """
         divs_len = 0
         while True:
-            # Scroll down to bottom
             self.web_driver.execute_script("window.scrollTo(0, document.body.scrollHeight,);")
-            # Wait to load page
             time.sleep(SCROLL_PAUSE_TIME)
             soup = BeautifulSoup(self.web_driver.page_source, features='html.parser')
-            # Find all needed divs
             divs_soup = soup.find('div', {'class': ['ZmHEEd']})
-            # Save found divs len
             new_divs_len = len(divs_soup.find_all('c-wiz', {'jsrenderer': ['PAQZbb']}))
-            # Check len
             if new_divs_len == divs_len:
                 break
             divs_len = new_divs_len

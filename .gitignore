@@ -215,3 +215,6 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+# User
+apps_scanner/data.json
